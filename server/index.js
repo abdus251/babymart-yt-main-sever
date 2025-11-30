@@ -11,7 +11,8 @@ import authRoutes from './routes/authRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import productsRoutes from './routes/productRoutes.js'
 import categoryRoutes from './routes/categoryRoutes.js'
-import brandsRoutes from './routes/brandRoutes.js'
+import brandsRoutes from './controllers/brandRoutes.js'
+import bannerRoutes from './routes/bannerRoutes.js'
 
 // Load env vars
 dotenv.config()
@@ -59,7 +60,6 @@ app.use(
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 )
-
 // Increase body size limit for JSON and URL-encoded payloads
 app.use(express.json({ limit: '10mb' }))
 app.use(express.urlencoded({ limit: '10mb', extended: true }))
@@ -72,6 +72,12 @@ app.use('/api/users', userRoutes)
 app.use('/api/categories', categoryRoutes)
 app.use('/api/brands', brandsRoutes)
 app.use('/api/products', productsRoutes)
+app.use('/api/banners', bannerRoutes)
+app.use('/api/stats', statsRoutes)
+app.use('/api/orders', orderRoutes)
+app.use('/api/cart', cartRoutes)
+app.use('/api/analytics', analyticsRoutes)
+app.use('/api/payment', paymentRoutes)
 
 // API Documentation
 app.use(
