@@ -2,6 +2,7 @@ import Product from '../models/productModel.js'
 import Category from '../models/categoryModel.js'
 import Brand from '../models/brandModel.js'
 import Order from '../models/orderModel.js'
+import asyncHandler from 'express-async-handler'
 
 // @desc    Get stats
 // @route   GET /api/stats

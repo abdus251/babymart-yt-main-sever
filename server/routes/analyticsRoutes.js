@@ -1,10 +1,10 @@
-import express from express
-import { 
-    getAnalyticsOverview,
-getProductAnalytics,
-getSalesAnalytics,
-getInventoryAnalytics                                               
-} from '../controllers/analyticsController.js' 
+import express from 'express'
+import {
+  getAnalytics,
+  getProductAnalytics,
+  getSalesAnalytics,
+  getInventoryAnalytics,
+} from '../controllers/analyticsController.js'
 import { admin, protect } from '../middleware/authMiddleware.js'
 
 const router = express.Router()
@@ -31,11 +31,11 @@ router.use(admin)
  *                   type: object
  *                   properties:
  *                     overview:
- *                       type: object   
+ *                       type: object
  *                       properties:
  *                         totalProducts:
  *                           type: number
- *                         totalOrders: 
+ *                         totalOrders:
  *                           type: number
  *                         totalUsers:
  *                           type: number
@@ -45,22 +45,22 @@ router.use(admin)
  *                       type: object
  *                       properties:
  *                         bestSellingProducts:
- *                           type: array    
+ *                           type: array
  *                           items:
  *                             type: object
  *                             properties:
  *                               _id:
- *                                 type: string 
+ *                                 type: string
  *                               productName:
  *                                 type: string
  *                               totalSold:
  *                                 type: number
- *                               totalRevenue:  
+ *                               totalRevenue:
  *                                 type: number
- *                         recentOrders:    
+ *                         recentOrders:
  *                           type: array
  *                           items:
- *                             $ref: '#/components/schemas/Order'   
+ *                             $ref: '#/components/schemas/Order'
  *                         monthlyRevenue:
  *                           type: array
  *                           items:
@@ -69,25 +69,25 @@ router.use(admin)
  *                               month:
  *                                 type: string
  *                               revenue:
- *                                 type: number 
+ *                                 type: number
  *                               orders:
- *                                 type: number 
+ *                                 type: number
  *                     inventory:
- *                       type: object   
+ *                       type: object
  *                       properties:
- *                         productsOutOfStock:  
- *                           type: number   
- *                         productsLowStock:    
- *                           type: number   
+ *                         productsOutOfStock:
+ *                           type: number
+ *                         productsLowStock:
+ *                           type: number
  *       401:
  *         description: Unauthorized
- *       403:   
- *         description: Forbidden   
+ *       403:
+ *         description: Forbidden
  *       500:
- *         description: Internal server error                         
+ *         description: Internal server error
  */
 
-router.get('/overview', getAnalyticsOverview)
+router.get('/overview', getAnalytics)
 
 /**
  * @swagger
@@ -107,7 +107,8 @@ router.get('/overview', getAnalyticsOverview)
  *                   type: object
  *                   properties:
  *                     bestSellingProducts:
- *                       type: array    
+ *                       type: array
  *                       items:
  *                         type: object
  */
+export default router

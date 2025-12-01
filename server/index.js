@@ -13,6 +13,12 @@ import productsRoutes from './routes/productRoutes.js'
 import categoryRoutes from './routes/categoryRoutes.js'
 import brandsRoutes from './controllers/brandRoutes.js'
 import bannerRoutes from './routes/bannerRoutes.js'
+import statsRoutes from './routes/statsRoutes.js'
+import orderRoutes from './routes/statsRoutes.js'
+import cartRoutes from './routes/cartRoutes.js'
+import analyticsRoutes from './routes/analyticsRoutes.js'
+import paymentRoutes from './routes/paymentRoutes.js'
+import { handleStripeWebhook } from './controllers/paymentController.js'
 
 // Load env vars
 dotenv.config()
@@ -115,3 +121,10 @@ const PORT = process.env.PORT || 8000
 app.listen(PORT, () => {
   console.log(`🚀 API Server is running!`)
 })
+
+//  Stripe Webhook requires raw body
+app.post(
+  '/api/payment/webhook',
+  express.raw({ type: 'application/json' }),
+  handleStripeWebhook
+)

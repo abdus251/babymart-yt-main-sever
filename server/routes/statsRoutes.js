@@ -45,6 +45,6 @@ const router = express.Router()
  *               $ref: '#/components/schemas/Error'
  */
 
-router.get('/').get(protect, getStats)
+router.get('/', protect, getStats)
 
 export default router
